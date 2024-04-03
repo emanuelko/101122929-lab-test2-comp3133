@@ -4,13 +4,17 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MissionListComponent } from './mission-list/mission-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { MissionlistComponent } from './missionlist/missionlist.component';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MissiondetailsComponent } from './missiondetails/missiondetails.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MissionListComponent
+    MissionlistComponent,
+    MissiondetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideHttpClient(withFetch()),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
